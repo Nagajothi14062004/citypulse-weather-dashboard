@@ -1,39 +1,76 @@
 import "./WeatherCard.css";
 
-function WeatherCard(){
+import { getWeatherCondition } from "../../utils/weatherCode";
 
-    return(
+function WeatherCard({ weather }) {
 
-        <section className="weather-card">
+  if (!weather) {
 
-            <h2>Select a City</h2>
+    return (
 
-            <h1>--°C</h1>
+      <section className="weather-card">
 
-            <p>Weather Condition</p>
+        <h2>Select a City</h2>
 
-            <div className="details">
+      </section>
 
-                <div>
-                    <h4>Humidity</h4>
-                    <p>--%</p>
-                </div>
+    );
 
-                <div>
-                    <h4>Wind</h4>
-                    <p>-- km/h</p>
-                </div>
+  }
 
-                <div>
-                    <h4>Feels Like</h4>
-                    <p>--°C</p>
-                </div>
+  return (
 
-            </div>
+    <section className="weather-card">
 
-        </section>
+      <h2>
 
-    )
+        {weather.city}, {weather.country}
+
+      </h2>
+
+      <h1>
+
+        {weather.temperature_2m}°C
+
+      </h1>
+
+      <p>
+
+        {getWeatherCondition(weather.weather_code)}
+
+      </p>
+
+      <div className="details">
+
+        <div>
+
+          <h4>Humidity</h4>
+
+          <p>
+
+            {weather.relative_humidity_2m}%
+
+          </p>
+
+        </div>
+
+        <div>
+
+          <h4>Wind</h4>
+
+          <p>
+
+            {weather.wind_speed_10m} km/h
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  );
 
 }
 

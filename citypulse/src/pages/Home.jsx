@@ -4,39 +4,59 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
 import Favorites from "../components/Favorites/Favorites";
 
-import { searchCity } from "../services/weatherApi";
+import {
+  searchCity,
+  getCurrentWeather,
+} from "../services/weatherApi";
 
 function Home() {
 
-  const [cityData, setCityData] = useState(null);
+  const [weather, setWeather] = useState(null);
 
-  const handleSearch = async (city) => {
+  const handleSearch = async(city)=>{
 
-    try {
+    try{
 
-      const data = await searchCity(city);
+      const cityData=await searchCity(city);
 
-      console.log(data);
+      const currentWeather=await getCurrentWeather(
+          cityData.latitude,
+          cityData.longitude
+      );
 
-      setCityData(data);
+      setWeather({
 
-    } catch (error) {
+        city:cityData.name,
+
+        country:cityData.country,
+
+        ...currentWeather
+
+      });
+
+    }
+
+    catch(error){
 
       alert(error.message);
 
     }
 
-  };
+  }
 
-  return (
+  return(
+
     <>
-      <SearchBar onSearch={handleSearch} />
 
-      <WeatherCard />
+        <SearchBar onSearch={handleSearch}/>
 
-      <Favorites />
+        <WeatherCard weather={weather}/>
+
+        <Favorites/>
+
     </>
-  );
+
+  )
 
 }
 
