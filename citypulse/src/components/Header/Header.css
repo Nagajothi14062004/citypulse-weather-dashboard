@@ -1,6 +1,9 @@
 .navbar{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
     padding:20px 40px;
@@ -8,16 +11,13 @@
     background:#2563eb;
 
     color:white;
-}
 
-.logo h1{
-    font-size:28px;
-    font-weight:600;
 }
 
 .theme-btn{
 
     width:45px;
+
     height:45px;
 
     border:none;
@@ -27,14 +27,5 @@
     cursor:pointer;
 
     font-size:20px;
-
-    background:white;
-
-    transition:.3s;
-}
-
-.theme-btn:hover{
-
-    transform:scale(1.1);
 
 }

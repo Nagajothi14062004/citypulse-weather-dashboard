@@ -18,3 +18,16 @@
     padding:12px 20px;
     cursor:pointer;
 }
+body.dark input{
+
+    background:#2b2b2b;
+
+    color:white;
+
+}
+
+body.dark input::placeholder{
+
+    color:#cccccc;
+
+}

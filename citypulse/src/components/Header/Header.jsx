@@ -1,15 +1,24 @@
 import "./Header.css";
 
-function Header() {
-  return (
-    <header className="navbar">
-      <h1>🌤 CityPulse</h1>
+function Header({ theme, toggleTheme }) {
 
-      <button className="theme-btn">
-        🌙
-      </button>
-    </header>
-  );
+    return (
+
+        <header className="navbar">
+
+            <h1>🌤 CityPulse</h1>
+
+            <button
+                className="theme-btn"
+                onClick={toggleTheme}
+            >
+                {theme === "light" ? "🌙" : "☀️"}
+            </button>
+
+        </header>
+
+    );
+
 }
 
 export default Header;
