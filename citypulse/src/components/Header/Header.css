@@ -2,16 +2,39 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:20px 40px;
+
     background:#2563eb;
+
     color:white;
 }
 
+.logo h1{
+    font-size:28px;
+    font-weight:600;
+}
+
 .theme-btn{
-    background:white;
+
+    width:45px;
+    height:45px;
+
     border:none;
-    padding:10px 15px;
-    border-radius:8px;
+
+    border-radius:50%;
+
     cursor:pointer;
-    font-size:18px;
+
+    font-size:20px;
+
+    background:white;
+
+    transition:.3s;
+}
+
+.theme-btn:hover{
+
+    transform:scale(1.1);
+
 }
