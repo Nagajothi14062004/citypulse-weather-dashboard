@@ -1,0 +1,10 @@
+.favorites{
+    width:90%;
+    margin:30px auto;
+}
+
+.fav-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
