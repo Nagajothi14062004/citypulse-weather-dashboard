@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
 import Favorites from "../components/Favorites/Favorites";
+import Loading from "../components/Loading/Loading";
+import Error from "../components/Error/Error";
 
 import {
   searchCity,
@@ -15,27 +17,39 @@ import {
 } from "../utils/storage";
 
 function Home() {
-  // Current weather state
+  // Current weather
   const [weather, setWeather] = useState(null);
 
-  // Favorite cities state
+  // Favorite cities
   const [favorites, setFavorites] = useState([]);
 
-  // Load favorites when app starts
+  // Loading state
+  const [loading, setLoading] = useState(false);
+
+  // Error message
+  const [error, setError] = useState("");
+
+  // Load favorites on page load
   useEffect(() => {
     setFavorites(getFavorites());
   }, []);
 
-  // Search city and fetch weather
+  // Search city
   const handleSearch = async (city) => {
     try {
+      setLoading(true);
+      setError("");
+
+      // Get latitude & longitude
       const cityData = await searchCity(city);
 
+      // Get weather
       const currentWeather = await getCurrentWeather(
         cityData.latitude,
         cityData.longitude
       );
 
+      // Store weather
       setWeather({
         city: cityData.name,
         country: cityData.country,
@@ -43,15 +57,18 @@ function Home() {
         longitude: cityData.longitude,
         ...currentWeather,
       });
-    } catch (error) {
-      alert(error.message);
+    } catch (err) {
+      setError(err.message);
+      setWeather(null);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Save favorite city
+  // Save favorite
   const addFavorite = () => {
     if (!weather) {
-      alert("Search a city first.");
+      setError("Search a city first.");
       return;
     }
 
@@ -60,7 +77,7 @@ function Home() {
     );
 
     if (exists) {
-      alert("City already added.");
+      setError("City already exists in favorites.");
       return;
     }
 
@@ -69,9 +86,11 @@ function Home() {
     setFavorites(updatedFavorites);
 
     saveFavorites(updatedFavorites);
+
+    setError("");
   };
 
-  // Remove favorite city
+  // Remove favorite
   const removeFavorite = (cityName) => {
     const updatedFavorites = favorites.filter(
       (item) => item.city !== cityName
@@ -83,8 +102,16 @@ function Home() {
   };
 
   return (
-    <>
-      <SearchBar onSearch={handleSearch} />
+    <main className="container">
+
+      <SearchBar
+        onSearch={handleSearch}
+        loading={loading}
+      />
+
+      {loading && <Loading />}
+
+      <Error message={error} />
 
       <WeatherCard weather={weather} />
 
@@ -94,7 +121,8 @@ function Home() {
         removeFavorite={removeFavorite}
         onSearch={handleSearch}
       />
-    </>
+
+    </main>
   );
 }
 
