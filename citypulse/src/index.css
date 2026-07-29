@@ -1,29 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Inter',sans-serif;
 }
+
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
 
 body{
 
-    font-family:Poppins,sans-serif;
+    background:linear-gradient(
+        180deg,
+        #e0f2fe 0%,
+        #bae6fd 45%,
+        #f8fbff 100%
+    );
 
-    transition:.3s;
-
-}
-
-body.light{
-
-    background:#f4f7fb;
-
-    color:#222;
+    color:#0f172a;
 
 }
+
+
+.container{
+    width:100%;
+    max-width:1280px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+
+/* ==========================
+   Mobile Responsive
+========================== */
+
+@media(max-width:600px){
+
+    .container{
+
+        width:100%;
+
+        padding:0 15px;
+
+        margin:25px auto;
+
+    }
+
+}
+/* Dark Mode */
 
 body.dark{
 
-    background:#121212;
+    min-height:100vh;
+
+    background:#0f172a;
 
     color:white;
+
+}
+
+body.dark .search-section{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .favorites{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .weather-card{
+
+    filter:brightness(.85);
+
+}
+
+
+body.dark .stat-card{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .stat-card h2{
+
+    color:white;
+
+}
+
+
+body.dark .stat-card h4{
+
+    color:#cbd5e1;
+
+}
+
+
+body.dark .empty-state{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .empty-state h2{
+
+    color:white;
+
+}
+
+
+body.dark .empty-state p{
+
+    color:#cbd5e1;
 
 }

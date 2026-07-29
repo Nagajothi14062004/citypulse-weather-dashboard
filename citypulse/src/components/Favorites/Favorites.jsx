@@ -1,63 +1,72 @@
 import "./Favorites.css";
+import { FaTimes } from "react-icons/fa";
 
 function Favorites({
   favorites,
-  addFavorite,
   removeFavorite,
   onSearch,
 }) {
 
   return (
-
     <section className="favorites">
 
-      <div className="favorite-header">
-
-        <h2>⭐ Favourite Cities</h2>
-
-        <button onClick={addFavorite}>
-          Save City
-        </button>
-
-      </div>
+      <h2>FAVORITES</h2>
 
       {favorites.length === 0 ? (
 
-        <p>No favourite cities yet.</p>
+        <div className="empty-favorite">
+          No Favorites
+        </div>
 
       ) : (
 
-        <ul>
+        <div className="favorite-list">
 
-          {favorites.map((city) => (
+          {
+            favorites.map((city) => (
 
-            <li key={city.city}>
-
-              <span
-                onClick={() => onSearch(city.city)}
-                style={{ cursor: "pointer" }}
+              <div
+                className="favorite-item"
+                key={city.city}
               >
-                {city.city}
-              </span>
 
-              <button
-                onClick={() => removeFavorite(city.city)}
-              >
-                ❌
-              </button>
+                <div
+                  className="favorite-info"
+                  onClick={() => onSearch(city.city)}
+                >
 
-            </li>
+                  <h3>
+                    {city.city}
+                  </h3>
 
-          ))}
+                  <p>
+                    {city.country}
+                  </p>
 
-        </ul>
+                </div>
+
+
+                <button
+                  className="delete-btn"
+                  onClick={() => removeFavorite(city.city)}
+                >
+
+                  <FaTimes />
+
+                </button>
+
+
+              </div>
+
+            ))
+          }
+
+        </div>
 
       )}
 
     </section>
-
   );
-
 }
 
 export default Favorites;

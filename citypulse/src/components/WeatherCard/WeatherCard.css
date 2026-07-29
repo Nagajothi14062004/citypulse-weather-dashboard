@@ -1,20 +1,255 @@
-.weather-card{
-    width:90%;
-    margin:30px auto;
-    padding:30px;
-    border-radius:12px;
-    background:#f5f5f5;
-    text-align:center;
-}
-body.dark .weather-card{
+/* ==========================
+   Weather Card
+========================== */
 
-    background:#1f1f1f;
+.weather-card{
+
+    width:100%;
+
+    max-width:100%;
+
+    box-sizing:border-box;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:linear-gradient(
+        135deg,
+        #48b9ea,
+        #5b7ef5
+    );
+
+    border-radius:30px;
+
+    padding:25px;
 
     color:white;
 
 }
-.details{
+
+
+/* ==========================
+   Top Section
+========================== */
+
+.weather-top{
+
+    width:100%;
+
     display:flex;
-    justify-content:space-around;
-    margin-top:20px;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+/* City Name */
+
+.weather-top h2{
+
+    font-size:32px;
+
+    margin:0;
+
+    font-weight:700;
+
+    color:rgba(255,255,255,.9);
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+}
+
+
+
+/* Location */
+
+.location{
+
+    margin-top:4px;
+
+    font-size:17px;
+
+    color:rgba(255,255,255,.9);
+
+}
+
+
+
+/* Star Button */
+
+.star-btn{
+
+    width:45px;
+
+    height:45px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.5);
+
+    background:transparent;
+
+    color:white;
+
+    font-size:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+/* ==========================
+   Main Weather
+========================== */
+
+
+.weather-main{
+
+    margin-top:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    width:100%;
+
+    min-width:0;
+
+}
+
+
+.weather-main > div{
+
+    min-width:0;
+
+}
+
+
+
+.weather-icon{
+
+    font-size:65px;
+
+    flex-shrink:0;
+
+}
+
+
+
+.temp{
+
+    font-size:65px;
+
+    font-weight:700;
+
+    margin:0;
+
+    line-height:1;
+
+}
+
+
+
+.condition{
+
+    margin-top:8px;
+
+    font-size:20px;
+
+}
+
+
+
+/* ==========================
+   Mobile
+========================== */
+
+
+@media(max-width:600px){
+
+
+    .weather-card{
+
+        padding:20px;
+
+        width:100%;
+
+    }
+
+
+
+    .weather-top{
+
+        gap:10px;
+
+    }
+
+
+
+    .weather-top h2{
+
+        font-size:26px;
+
+        max-width:200px;
+
+    }
+
+
+
+    .star-btn{
+
+        width:40px;
+
+        height:40px;
+
+        font-size:18px;
+
+    }
+
+
+
+    .weather-main{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+
+
+    .weather-icon{
+
+        font-size:55px;
+
+    }
+
+
+
+    .temp{
+
+        font-size:55px;
+
+    }
+
+
 }

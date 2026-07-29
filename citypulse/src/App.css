@@ -1,8 +1,110 @@
-body{
-    background:#eef3f9;
+/* Dashboard Layout */
+
+.dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    width:100%;
+
+    gap:30px;
+
 }
 
-footer{
-    text-align:center;
-    padding:30px;
+.dashboard-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.dashboard-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+@media(min-width:900px){
+
+    .dashboard{
+
+        display:grid;
+
+        grid-template-columns:minmax(0,1fr) 340px;
+
+        gap:30px;
+
+    }
+
+}
+/* Dark Mode */
+
+body.dark .search-section{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .favorites{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .weather-card{
+
+    filter:brightness(.85);
+
+}
+
+
+body.dark .stat-card{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .stat-card h2{
+
+    color:white;
+
+}
+
+
+body.dark .stat-card h4{
+
+    color:#cbd5e1;
+
+}
+
+
+body.dark .empty-state{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .empty-state h2{
+
+    color:white;
+
+}
+
+
+body.dark .empty-state p{
+
+    color:#cbd5e1;
+
 }

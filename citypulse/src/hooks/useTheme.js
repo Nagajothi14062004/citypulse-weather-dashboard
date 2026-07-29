@@ -1,29 +1,75 @@
 import { useEffect, useState } from "react";
 
+
 function useTheme() {
 
-    const [theme, setTheme] = useState(() => {
-        return localStorage.getItem("theme") || "light";
+
+    const [darkMode, setDarkMode] = useState(() => {
+
+        const savedTheme = localStorage.getItem("theme");
+
+        return savedTheme === "dark";
+
     });
+
+
 
     useEffect(() => {
 
-        document.body.className = theme;
 
-        localStorage.setItem("theme", theme);
+        if(darkMode){
 
-    }, [theme]);
+
+            document.body.classList.add("dark");
+
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+
+        }
+        else{
+
+
+            document.body.classList.remove("dark");
+
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+
+        }
+
+
+    },[darkMode]);
+
+
+
 
     const toggleTheme = () => {
 
-        setTheme((prevTheme) =>
-            prevTheme === "light" ? "dark" : "light"
-        );
+
+        setDarkMode((previous)=> !previous);
+
 
     };
 
-    return { theme, toggleTheme };
+
+
+    return {
+
+        darkMode,
+
+        toggleTheme
+
+    };
+
 
 }
+
 
 export default useTheme;

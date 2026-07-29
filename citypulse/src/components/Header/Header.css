@@ -1,4 +1,13 @@
+/* ===========================
+   Header
+=========================== */
+
 .navbar{
+
+    width:95%;
+    max-width:1280px;
+
+    margin:25px auto 35px;
 
     display:flex;
 
@@ -6,26 +15,210 @@
 
     align-items:center;
 
-    padding:20px 40px;
+    padding:0 10px;
 
-    background:#2563eb;
+}
+
+
+/* ===========================
+   Brand
+=========================== */
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+
+/* Weather Icon */
+
+.brand-icon{
+
+    width:70px;
+    height:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#2aa9e0,#4f8cff);
+
+    color:white;
+
+    font-size:32px;
+
+    flex-shrink:0;
+
+    margin-left:20px;
+}
+
+
+/* Text */
+
+.brand-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+
+.brand-text h1{
+
+    margin:0;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    color:#010713;
+
+    line-height:1.1;
+
+}
+
+
+.brand-text h3{
+
+    margin:5px 0 0;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    color:#334155;
+
+}
+
+
+/* ===========================
+   Theme Button
+=========================== */
+
+.theme-button{
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    border:1px solid #d9e4ec;
+
+    color:#0f172a;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+     margin-right:50px;
+
+}
+
+
+/* ===========================
+   Dark Mode
+=========================== */
+
+
+body.dark .brand-text h1{
 
     color:white;
 
 }
 
-.theme-btn{
 
-    width:45px;
+body.dark .brand-text h3{
 
-    height:45px;
+    color:#cbd5e1;
 
-    border:none;
+}
 
-    border-radius:50%;
 
-    cursor:pointer;
+body.dark .theme-button{
 
-    font-size:20px;
+    background:#1e293b;
+
+    color:white;
+
+}
+
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media(max-width:600px){
+
+    .navbar{
+
+        width:100%;
+
+        padding:0 15px;
+
+        margin-bottom:25px;
+
+    }
+
+
+    .brand{
+
+        gap:10px;
+
+    }
+
+
+    .brand-icon{
+
+        width:45px;
+
+        height:45px;
+
+        font-size:24px;
+
+    }
+
+
+    .brand-text h1{
+
+        font-size:28px;
+
+    }
+
+
+    .brand-text h3{
+
+        font-size:13px;
+
+    }
+
+
+    .theme-button{
+
+        width:45px;
+
+        height:45px;
+
+    }
 
 }

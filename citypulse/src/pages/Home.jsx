@@ -5,6 +5,7 @@ import WeatherCard from "../components/WeatherCard/WeatherCard";
 import Favorites from "../components/Favorites/Favorites";
 import Loading from "../components/Loading/Loading";
 import Error from "../components/Error/Error";
+import WeatherStats from "../components/WeatherStats/WeatherStats";
 
 import {
   searchCity,
@@ -16,40 +17,33 @@ import {
   saveFavorites,
 } from "../utils/storage";
 
+import "./Home.css";
+
 function Home() {
-  // Current weather
+
   const [weather, setWeather] = useState(null);
-
-  // Favorite cities
   const [favorites, setFavorites] = useState([]);
-
-  // Loading state
   const [loading, setLoading] = useState(false);
-
-  // Error message
   const [error, setError] = useState("");
 
-  // Load favorites on page load
   useEffect(() => {
     setFavorites(getFavorites());
   }, []);
 
-  // Search city
   const handleSearch = async (city) => {
+
     try {
+
       setLoading(true);
       setError("");
 
-      // Get latitude & longitude
       const cityData = await searchCity(city);
 
-      // Get weather
       const currentWeather = await getCurrentWeather(
         cityData.latitude,
         cityData.longitude
       );
 
-      // Store weather
       setWeather({
         city: cityData.name,
         country: cityData.country,
@@ -57,19 +51,32 @@ function Home() {
         longitude: cityData.longitude,
         ...currentWeather,
       });
+
     } catch (err) {
-      setError(err.message);
-      setWeather(null);
-    } finally {
+
+    console.log("Error:", err.message);
+
+    setError(
+        err.message || "Something went wrong"
+    );
+
+    setWeather(null);
+
+} finally {
+
       setLoading(false);
+
     }
+
   };
 
-  // Save favorite
   const addFavorite = () => {
+
     if (!weather) {
+
       setError("Search a city first.");
       return;
+
     }
 
     const exists = favorites.some(
@@ -77,53 +84,101 @@ function Home() {
     );
 
     if (exists) {
+
       setError("City already exists in favorites.");
       return;
+
     }
 
-    const updatedFavorites = [...favorites, weather];
+    const updated = [...favorites, weather];
 
-    setFavorites(updatedFavorites);
+    setFavorites(updated);
 
-    saveFavorites(updatedFavorites);
+    saveFavorites(updated);
 
-    setError("");
   };
 
-  // Remove favorite
   const removeFavorite = (cityName) => {
-    const updatedFavorites = favorites.filter(
+
+    const updated = favorites.filter(
       (item) => item.city !== cityName
     );
 
-    setFavorites(updatedFavorites);
+    setFavorites(updated);
 
-    saveFavorites(updatedFavorites);
+    saveFavorites(updated);
+
   };
 
   return (
+
     <main className="container">
 
       <SearchBar
         onSearch={handleSearch}
-        loading={loading}
+        setError={setError}
       />
 
       {loading && <Loading />}
 
-      <Error message={error} />
+      {error && <Error message={error} />}
 
-      <WeatherCard weather={weather} />
+      <section className="dashboard">
 
-      <Favorites
-        favorites={favorites}
-        addFavorite={addFavorite}
-        removeFavorite={removeFavorite}
-        onSearch={handleSearch}
-      />
+        <div className="dashboard-left">
+
+          {!loading && !weather ? (
+
+            <section className="empty-state">
+
+              <div className="empty-icon">
+                🔎
+              </div>
+
+              <h2>Start with a city</h2>
+
+              <p>
+                Search above to see current
+                temperature, wind, humidity
+                and the next five days.
+              </p>
+
+            </section>
+
+          ) : (
+
+            <>
+              <WeatherCard
+                weather={weather}
+                addFavorite={addFavorite}
+              />
+
+              <WeatherStats
+                weather={weather}
+              />
+       
+            </>
+
+          )}
+
+        </div>
+
+        <div className="dashboard-right">
+
+          <Favorites
+            favorites={favorites}
+            removeFavorite={removeFavorite}
+            onSearch={handleSearch}
+          />
+
+        </div>
+
+      </section>
 
     </main>
+
   );
+
 }
 
 export default Home;

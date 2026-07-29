@@ -1,24 +1,35 @@
 import "./Header.css";
+import { FiMoon, FiSun } from "react-icons/fi";
+import { WiDayCloudy } from "react-icons/wi";
 
-function Header({ theme, toggleTheme }) {
+function Header({ darkMode, toggleTheme }) {
+  return (
+    <header className="navbar">
 
-    return (
+      <div className="brand">
 
-        <header className="navbar">
+        <div className="brand-icon">
+          <WiDayCloudy />
+        </div>
 
-            <h1>🌤 CityPulse</h1>
+        <div className="brand-text">
+          <h1>CityPulse</h1>
+          <h3>Live weather for any city</h3>
+        </div>
 
-            <button
-                className="theme-btn"
-                onClick={toggleTheme}
-            >
-                {theme === "light" ? "🌙" : "☀️"}
-            </button>
+      </div>
 
-        </header>
+      <button
+  className="theme-button"
+  onClick={() => {
+    toggleTheme();
+  }}
+>
+  {darkMode ? <FiSun /> : <FiMoon />}
+</button>
 
-    );
-
+    </header>
+  );
 }
 
 export default Header;

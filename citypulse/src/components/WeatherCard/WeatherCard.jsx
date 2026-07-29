@@ -1,77 +1,69 @@
 import "./WeatherCard.css";
+import { FaStar, FaCloud } from "react-icons/fa";
 
-import { getWeatherCondition } from "../../utils/weatherCode";
-
-function WeatherCard({ weather }) {
-
+function WeatherCard({ weather, addFavorite }) {
   if (!weather) {
-
     return (
-
       <section className="weather-card">
+        <div className="weather-top">
+          <div>
+            <h2>Select a City</h2>
+            <p className="location">Search for any city</p>
+          </div>
 
-        <h2>Select a City</h2>
+          <button className="star-btn">
+            <FaStar />
+          </button>
+        </div>
 
+        <div className="weather-main">
+          <FaCloud className="weather-icon" />
+
+          <div>
+            <h1 className="temp">--°</h1>
+            <p className="condition">Weather Condition</p>
+          </div>
+        </div>
       </section>
-
     );
-
   }
 
   return (
-
     <section className="weather-card">
-
-      <h2>
-
-        {weather.city}, {weather.country}
-
-      </h2>
-
-      <h1>
-
-        {weather.temperature_2m}°C
-
-      </h1>
-
-      <p>
-
-        {getWeatherCondition(weather.weather_code)}
-
-      </p>
-
-      <div className="details">
-
+      <div className="weather-top">
         <div>
+          <h2>{weather.city}</h2>
 
-          <h4>Humidity</h4>
-
-          <p>
-
-            {weather.relative_humidity_2m}%
-
+          <p className="location">
+            {weather.country}
           </p>
-
         </div>
 
+        <button
+          className="star-btn"
+          onClick={addFavorite}
+        >
+          <FaStar />
+        </button>
+      </div>
+
+      <div className="weather-main">
+
+        <FaCloud className="weather-icon" />
+
         <div>
+          <h1 className="temp">
+            {weather.temperature}°
+          </h1>
 
-          <h4>Wind</h4>
-
-          <p>
-
-            {weather.wind_speed_10m} km/h
-
+          <p className="condition">
+            {weather.condition}
           </p>
-
         </div>
 
       </div>
-
     </section>
-
   );
-
 }
 
 export default WeatherCard;

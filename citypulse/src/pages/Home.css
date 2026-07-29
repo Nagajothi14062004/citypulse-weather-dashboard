@@ -1,0 +1,221 @@
+/* ==========================
+   Dashboard Layout
+========================== */
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:minmax(0,1fr) 340px;
+
+    gap:30px;
+
+    align-items:start;
+
+}
+
+
+.dashboard-left{
+
+    width:100%;
+
+    min-width:0;
+
+}
+
+
+.dashboard-right{
+
+    width:340px;
+
+}
+
+
+/* ==========================
+   Mobile
+========================== */
+
+
+
+
+/* Empty State */
+
+.empty-state{
+
+    width:100%;
+
+    max-width:900px;
+
+    min-height:320px;
+
+    height:auto;
+
+    background:#ffffff;
+
+    border-radius:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    box-sizing:border-box;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+.empty-icon{
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    background:#eef8ff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+}
+
+.empty-state h2{
+
+    font-size:40px;
+
+    color:#0f172a;
+
+    margin-bottom:12px;
+
+}
+
+.empty-state p{
+
+    width:100%;
+
+    max-width:520px;
+
+    color:#64748b;
+
+    font-size:22px;
+
+    line-height:1.5;
+
+}
+
+@media(max-width:900px){
+
+    .dashboard{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+
+    }
+
+
+    .dashboard-left{
+
+        width:100%;
+
+    }
+
+
+    .dashboard-right{
+
+        width:100%;
+
+    }
+
+
+    .empty-state h2{
+
+        font-size:28px;
+
+    }
+
+
+    .empty-state p{
+
+        font-size:16px;
+
+    }
+
+}
+/* Dark Mode */
+
+body.dark .search-section{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .favorites{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .weather-card{
+
+    filter:brightness(.85);
+
+}
+
+
+body.dark .stat-card{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .stat-card h2{
+
+    color:white;
+
+}
+
+
+body.dark .stat-card h4{
+
+    color:#cbd5e1;
+
+}
+
+
+body.dark .empty-state{
+
+    background:#1e293b;
+
+}
+
+
+body.dark .empty-state h2{
+
+    color:white;
+
+}
+
+
+body.dark .empty-state p{
+
+    color:#cbd5e1;
+
+}

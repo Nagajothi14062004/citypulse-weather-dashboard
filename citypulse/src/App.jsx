@@ -7,23 +7,18 @@ import useTheme from "./hooks/useTheme";
 
 function App() {
 
-    const { theme, toggleTheme } = useTheme();
+    const { darkMode, toggleTheme } = useTheme();
 
     return (
-
         <>
-
             <Header
-                theme={theme}
+                darkMode={darkMode}
                 toggleTheme={toggleTheme}
             />
 
             <Home />
-
         </>
-
     );
-
 }
 
 export default App;

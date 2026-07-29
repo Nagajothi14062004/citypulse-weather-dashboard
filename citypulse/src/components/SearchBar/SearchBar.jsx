@@ -1,47 +1,93 @@
 import "./SearchBar.css";
 import { useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
-function SearchBar({ onSearch }) {
+function SearchBar({ onSearch, setError }) {
+
   const [city, setCity] = useState("");
 
- const handleSearch = () => {
-  console.log("Button Clicked");
+  const handleSearch = () => {
 
-  const cityName = city.trim();
+    if (!city.trim()) {
+      setError("Please enter a city.");
+      return;
+    }
 
-  if (cityName === "") {
-    alert("Please enter a city name.");
-    return;
-  }
+    setError("");
+    onSearch(city.trim());
 
-  onSearch(cityName);
-  setCity("");
-};
+  };
+
 
   return (
+
     <section className="search-section">
-      <label htmlFor="cityInput">Search City</label>
+
+      <h3>Search a city</h3>
+
 
       <div className="search-box">
-        <input
-          id="cityInput"
-          type="text"
-          placeholder="Enter city name"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleSearch();
-            }
-          }}
-        />
 
-        <button onClick={handleSearch}>
+
+        <div className="search-input">
+
+
+          <FiSearch className="search-icon"/>
+
+
+          <label 
+            htmlFor="city-search"
+            className="sr-only"
+          >
+            Search city name
+          </label>
+
+
+          <input
+
+            id="city-search"
+
+            value={city}
+
+            placeholder="Search city..."
+
+            onChange={(e)=>setCity(e.target.value)}
+
+            onKeyDown={(e)=>{
+
+              if(e.key==="Enter"){
+
+                handleSearch();
+
+              }
+
+            }}
+
+          />
+
+
+        </div>
+
+
+
+        <button 
+          onClick={handleSearch}
+          type="button"
+        >
           Search
         </button>
+
+
       </div>
+
+
+     
+
+
     </section>
+
   );
+
 }
 
 export default SearchBar;
