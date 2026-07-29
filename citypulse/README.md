@@ -29,19 +29,21 @@ CityPulse is a responsive weather dashboard developed using **React**, **JavaScr
 - React
 - JavaScript (ES6+)
 - CSS3
+- Vite
 - Fetch API
 - Open-Meteo Geocoding API
 - Open-Meteo Forecast API
 - Browser localStorage
 - Git
 - GitHub
+- Vercel
 
 ---
 
 ## 📁 Folder Structure
 
 ```text
-CityPulse/
+citypulse/
 │
 ├── public/
 │
@@ -66,13 +68,13 @@ CityPulse/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/CityPulse.git
+git clone https://github.com/Nagajothi14062004/citypulse-weather-dashboard.git
 ```
 
 ### 2. Navigate to the project folder
 
 ```bash
-cd CityPulse
+cd citypulse
 ```
 
 ### 3. Install dependencies
@@ -89,9 +91,9 @@ npm run dev
 
 ### 5. Open your browser
 
-Open the URL shown in the terminal (usually **http://localhost:5173**).
-
----
+```
+http://localhost:5173
+```
 
 ## 🌍 APIs Used
 
@@ -101,9 +103,10 @@ Used to convert the city name into latitude and longitude coordinates.
 
 Example:
 
-```
+```text
 https://geocoding-api.open-meteo.com/v1/search?name=Chennai
 ```
+
 
 ### Open-Meteo Forecast API
 
@@ -111,9 +114,10 @@ Used to retrieve the current weather information based on latitude and longitude
 
 Example:
 
-```
+```text
 https://api.open-meteo.com/v1/forecast
 ```
+
 
 ---
 
@@ -141,28 +145,24 @@ https://api.open-meteo.com/v1/forecast
 
 ### Home Page
 
-_Add a screenshot of the home page here._
+![Home Page](image-1.png)
+
 
 ### Weather Search
 
-_Add a screenshot after searching for a city._
+![Weather Search](image-2.png)
 
 ### Dark Mode
 
-_Add a screenshot showing dark mode._
+![Dark Mode](image-3.png)
 
 ### Favorite Cities
 
-_Add a screenshot showing the favorites list._
-
----
+![Favorite Cities](image-4.png)
 
 ## 🌐 Live Demo
 
-**Deployment Link:**
-
-_Add your Netlify, Vercel, or GitHub Pages URL here after deployment._
-
+https://citypulse-weather-dashboard.vercel.app/
 ---
 
 ## 👩‍💻 Author
@@ -171,7 +171,11 @@ _Add your Netlify, Vercel, or GitHub Pages URL here after deployment._
 
 Information Technology Student
 
-GitHub: https://github.com/YOUR_GITHUB_USERNAME
+---
+
+## 🔗 GitHub Repository
+
+https://github.com/Nagajothi14062004/citypulse-weather-dashboard
 
 ---
 
